@@ -15,15 +15,37 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            // Cle auto-generee localement (voir README), juste pour pouvoir installer l'APK
+            // en dehors du Play Store. Pas destinee a une vraie publication.
+            storeFile = file("release-key.jks")
+            storePassword = "interrupteur123"
+            keyAlias = "interrupteur"
+            keyPassword = "interrupteur123"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // Supprime le code et les ressources non utilisees (surtout dans les librairies
+            // AndroidX/Material) : c'est ce qui reduit vraiment la taille de l'APK.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    lint {
+        // Desactive : plante avec ce JDK tres recent (analyse Kotlin/UAST interne au lint,
+        // meme souci que le demon Kotlin plus haut). Sans rapport avec R8/minification.
+        checkReleaseBuilds = false
     }
 
     kotlinOptions {
