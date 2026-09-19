@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Indispensable : sans cette permission, l'appli n'a pas le droit d'acceder au reseau -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:label="Interrupteur"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <!--
+            usesCleartextTraffic="true" est necessaire car on parle en http:// (non chiffre)
+            a un appareil sur le reseau local (ex: module Shelly / Tasmota / ESP).
+            Depuis Android 9, le http:// est bloque par defaut sans cette ligne.
+        -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fondEcran">#F4F1EA</color>
+    <color name="boutonAllumer">#2E7D32</color>
+    <color name="boutonEteindre">#C62828</color>
+    <color name="texteTitre">#264D73</color>
+</resources>

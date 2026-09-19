@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contenu de la boite de dialogue "Ajouter un interrupteur" -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type d'interrupteur"
+            android:textSize="12sp"
+            android:textColor="#666666" />
+
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/champNomDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nom"
+            android:inputType="text" />
+
+        <!-- Visible seulement pour un Shelly -->
+        <LinearLayout
+            android:id="@+id/blocIpDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/champIpDialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Adresse IP"
+                android:inputType="text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/boutonDecouvrir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Decouvrir"
+                android:textSize="12sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- Visible seulement pour un Shelly : utile s'il a plusieurs relais (ex: Shelly Pro 2) -->
+        <EditText
+            android:id="@+id/champCanalDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Canal (0 = premier relais, 1 = deuxieme)"
+            android:inputType="number"
+            android:visibility="gone" />
+
+        <!-- Visible seulement pour un Shelly : cherche tous les Shelly presents sur le reseau -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/boutonScannerReseau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Scanner le reseau"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
+        <!-- Visible seulement pour un interrupteur Generique : les 2 URL a appeler en GET -->
+        <TextView
+            android:id="@+id/labelUrlOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="URL ON (pour allumer)"
+            android:textSize="12sp"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/champUrlOnDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="http://192.168.0..."
+            android:inputType="textUri" />
+
+        <TextView
+            android:id="@+id/labelUrlOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="URL OFF (pour eteindre)"
+            android:textSize="12sp"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/champUrlOffDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="http://192.168.0..."
+            android:inputType="textUri" />
+
+    </LinearLayout>
+</ScrollView>
